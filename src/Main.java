@@ -1,7 +1,6 @@
 import classes.LeituraRetornoBancoBrasil;
 import classes.LeituraRetornoBradesco;
 import classes.ProcessarBoletos;
-import interfaces.LeituraRetorno;
 
 public class Main {
     public static void main(String[] args) {
