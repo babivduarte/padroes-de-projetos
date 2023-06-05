@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/aula1Padroes.iml" filepath="$PROJECT_DIR$/aula1Padroes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StrategyTemplateMethod.iml" filepath="$PROJECT_DIR$/StrategyTemplateMethod.iml" />
     </modules>
   </component>
 </project>
