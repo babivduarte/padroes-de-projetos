@@ -2,6 +2,14 @@ package classes;
 
 import interfaces.LeituraRetorno;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProcessarBoletos {
 
     private LeituraRetorno leituraRetorno;
@@ -10,10 +18,21 @@ public class ProcessarBoletos {
         this.leituraRetorno = leituraRetorno;
     }
 
-    public void processar(String nomeArquivo){
-        var listaBoletos = leituraRetorno.lerArquivo(nomeArquivo);
-        for (Boleto boleto : listaBoletos) {
-            System.out.println(boleto);
+    public final List<Boleto> processar(String nomeArquivo){
+        try {
+            BufferedReader reader =
+                    Files.newBufferedReader(Paths.get(nomeArquivo));
+            String line;
+            List<Boleto> boletos = new ArrayList<>();
+            while ((line = reader.readLine()) != null){
+                String[] vetor = line.split(";");
+                Boleto boleto = leituraRetorno.processarLinhaArquivo(vetor);
+                boletos.add(boleto);
+                System.out.println(boleto);
+            }
+            return boletos;
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
         }
     }
 
